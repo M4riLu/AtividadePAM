@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+:root{
+    --bg_navbar: #333;
+    --bg_content: rgb(99, 99, 99);
+    --c_font_light: #f2f2f2;
+    --c_hover: #555;
+    --c_hover_content: rgb(121, 121, 121);
+    --c_bar: #ffffff;
+}
+
+body{
+    
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    padding: 0px;
+    
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg_navbar);
+    color: var(--c_font_light);
+}
+
+.navbar_titulo{
+    font-size: 1.5rem;
+    margin: 0.5rem;
+}
+
+.navbar_link ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+.navbar_link li{
+    list-style-type: none;
+}
+
+.navbar_link a{
+    text-decoration: none;
+    color: var(--c_font_light);
+    padding: 1rem;
+    display: block;
+}
+
+.navbar_link a:hover, .dropdown:hover .drop_button{
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: var(--c_hover);
+}
+
+.navbar_button{
+    position: absolute;
+    top: 0.75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
+
+.navbar_button .bar{
+    height: 3px;
+    width: 100%;
+    background-color: var(--c_bar);
+    border-radius: 10px;
+    transition: 0.6s;
+}
+
+.dropdown .drop_button{
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    background: inherit;
+    color: inherit;
+    padding: 1rem;
+    font-family: inherit;
+    margin: 0px;
+}
+
+.drop_content{
+    display: none;
+    position: absolute;
+    background-color: var(--bg_content);
+    min-width: 160px;
+    z-index: 1;
+}
+
+.drop_content a{
+    display: block;
+    float: none;
+    color: var(--c_font_light);
+}
+
+.drop_content a:hover{
+    background-color: var(--c_hover_content);
+    transition: 0.6s;
+}
+
+.dropdown:hover .drop_content{
+    display: block;
+}
+
+@media (max-width: 500px){
+    .navbar_button{
+        display: flex;
+    }
+
+    .navbar_link{
+        display: none;
+        width: 100%;
+    }
+
+    .navbar{
+        flex-direction: column;
+        align-items: flex-start;
+}
+
+.navbar_link ul{
+    flex-direction: column;
+    width: 100%;
+}
+
+.navbar_link li{
+    text-align: center;
+}
+
+.navbar_link li a{
+    padding: 1rem 1rem;
+}
+
+.navbar_link.active{
+    display: flex;
+}
+
+.navbar_link.active .drop_content{
+    position: relative;
+}
+
+.navbar_link.active .dropdown .drop_button{
+    display: block;
+    width: 100%;
+}
+
+/* Animação do botão responsivo */
+#top, #bottom{
+    transform-origin: left;
+}
+
+.navbar.active .navbar_button #top{
+    transform: rotate(38deg);
+    transition: 0.6s;
+}
+
+.navbar.active .navbar_button #center{
+    opacity: 0;
+    transition: 0.6s;
+}
+
+.navbar.active .navbar_button #bottom{
+    transform: rotate(-38deg);
+    transition: 0.6s;
+}
+
+
+}
